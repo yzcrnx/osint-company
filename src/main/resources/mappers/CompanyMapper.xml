@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.CompanyMapper">
+
+    <select id="findCompanyNum" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select count(id) from companyinformation where name = #{CompanyName}
+    </select>
+
+    <insert id="insertCompany" parameterType="com.example.demo.entity.CompanyInfo">
+        insert into companyinformation(id, name, email, phoneNumber, websiteList, legalPersonName,
+        creditCode,masterCompany,regStatus,percent)
+        values
+         (#{id}, #{name}, #{email}, #{phoneNumber}, #{websiteList}, #{legalPersonName}, #{creditCode},
+         #{masterCompany},#{regStatus},#{percent})
+    </insert>
+
+    <select id="findSubCompany" resultType="java.util.Map" parameterType="java.lang.String">
+        select * from companyinformation where masterCompany = #{CompanyName}
+    </select>
+
+    <select id="findSubCompanyNum" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select count(id) from companyinformation where masterCompany = #{masterCompany}
+    </select>
+
+    <select id="findCompany" resultType="com.example.demo.entity.CompanyInfo" parameterType="java.lang.String">
+        select * from companyinformation where name = #{CompanyName}
+    </select>
+
+    <update id="updateCompanyInfo" parameterType="com.example.demo.entity.CompanyInfo">
+        update companyinformation <set>
+        <if test="email !=null">email = #{email},</if>
+        <if test="phoneNumber != null">phoneNumber = #{phoneNumber},</if>
+        <if test="websiteList != null">websiteList = #{websiteList}</if>
+    </set>
+    where name = #{name}
+    </update>
+</mapper>

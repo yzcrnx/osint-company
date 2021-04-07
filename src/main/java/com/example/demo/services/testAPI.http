@@ -1,0 +1,16 @@
+GET http://localhost:8080/company/GetSub?name=中国人民财产保险股份有限公司
+Accept: application/json
+
+###
+
+POST https://113.31.117.140:8443/log.in
+
+Username=admin&Password=Qq321234342.
+
+###
+
+GET https://open.api.tianyancha.com/services/open/ic/inverst/2.0.json?pageSize=20&pageNum=1&keyword=江苏瑞新信息技术股份有限公司
+Authorization: a7a4b7fd-0d2a-45d0-b37e-c6256898858b
+Content-Type: application/json
+
+###
